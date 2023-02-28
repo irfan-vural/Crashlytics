@@ -14,6 +14,15 @@ import 'app.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+
+  bool weWantFatalErrorRecording = true;
+  FlutterError.onError = (errorDetails) {
+    if (weWantFatalErrorRecording) {
+      FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
+    } else {
+      FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+    }
+  };
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
   FlutterError.onError = (errorDetails) {
     FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
