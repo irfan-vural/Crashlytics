@@ -272,12 +272,25 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.red.shade900,
         title: Text(widget.title),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
+          MaterialButton(
+            onPressed: _testAllEventTypes,
+            child: const Text('Test all event types'),
+          ),
+          MaterialButton(
+            onPressed: _setDefaultEventParameters,
+            child: const Text('setDefaultEventParameters'),
+          ),
+          MaterialButton(
+            onPressed: _sendAnalyticsEvent,
+            child: const Text('sendAnalyticsEvent'),
+          ),
           MaterialButton(
             onPressed: _sendAnalyticsEvent,
             child: const Text('Test logEvent'),
@@ -317,7 +330,6 @@ class _MyHomePageState extends State<MyHomePage> {
           MaterialButton(
             onPressed: () {
               _setDefaultEventParameters();
-              FirebaseCrashlytics.instance.crash();
             },
             child: const Text('Test setDefaultEventParameters'),
           ),
@@ -326,7 +338,7 @@ class _MyHomePageState extends State<MyHomePage> {
             style: const TextStyle(color: Color.fromARGB(255, 0, 155, 0)),
           ),
           MaterialButton(
-            onPressed: () => throw Exception('Test Crashlytics'),
+            onPressed: () => FirebaseCrashlytics.instance.crash(),
             child: const Text('Test Crashlytics'),
           ),
         ],

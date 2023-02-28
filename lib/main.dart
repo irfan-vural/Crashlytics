@@ -16,11 +16,12 @@ Future<void> main() async {
   await Firebase.initializeApp();
 
   bool weWantFatalErrorRecording = true;
+
   FlutterError.onError = (errorDetails) {
     if (weWantFatalErrorRecording) {
       FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
     } else {
-      FirebaseCrashlytics.instance.recordFlutterError(errorDetails);
+      FlutterError.dumpErrorToConsole(errorDetails);
     }
   };
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
