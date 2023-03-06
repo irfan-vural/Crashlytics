@@ -311,14 +311,7 @@ class _MyHomePageState extends State<MyHomePage> {
             onPressed: _testSetAnalyticsCollectionEnabled,
             child: const Text('Test setAnalyticsCollectionEnabled'),
           ),
-          MaterialButton(
-            onPressed: _testSetSessionTimeoutDuration,
-            child: const Text('Test setSessionTimeoutDuration'),
-          ),
-          MaterialButton(
-            onPressed: _testSetUserProperty,
-            child: const Text('Test setUserProperty'),
-          ),
+         
           MaterialButton(
             onPressed: _testAppInstanceId,
             child: const Text('Test appInstanceId'),
