@@ -20,8 +20,6 @@ Future<void> main() async {
   FlutterError.onError = (errorDetails) {
     if (weWantFatalErrorRecording) {
       FirebaseCrashlytics.instance.recordFlutterFatalError(errorDetails);
-    } else {
-      FlutterError.dumpErrorToConsole(errorDetails);
     }
   };
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
